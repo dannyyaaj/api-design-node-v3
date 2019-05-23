@@ -12,4 +12,19 @@ app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
-export const start = () => {}
+app.get('/', (req, res) => {
+  // callback function referred to as a controller
+  res.send({ message: 'hello world, this is a get request' })
+})
+
+app.post('/', (req, res) => {
+  console.log(req.body)
+  res.send({ message: 'ok, this is a post request' })
+})
+
+export const start = () => {
+  app.listen(3000, () => {
+    console.log('server is on 3000')
+  })
+}
+// use npm run dev to run server
